@@ -12,15 +12,14 @@ export function createApp() {
       if (!origin) return callback(null, true);
       if (
         origin === env.clientUrl ||
-        origin.endsWith('.netlify.app') ||
-        origin === 'http://localhost:5173' ||
-        origin === 'http://localhost:3000'
+        origin === 'https://curalink-v.netlify.app'
       ) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
       }
     },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   }));
   app.use(express.json({ limit: "1mb" }));
